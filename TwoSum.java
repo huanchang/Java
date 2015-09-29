@@ -11,6 +11,8 @@ public class TwoSum{
 		// Test array with length from 0 to 10
 		Random rand = new Random();
 		
+		int solution = 1;
+		
 		for ( int i = 0; i <= 20; i++ ) {
 			int[] data = new int[i];
 			
@@ -25,13 +27,7 @@ public class TwoSum{
 			System.out.printf( "\n");
 			
 			
-			int[] res = sortSolution(data, target );
-			
-			if ( res[0] == -1 ) {
-				System.out.printf( "\tTARGET: No valid pair found\n.", target);
-			} else{
-				System.out.printf( "\tTARGET: %d\tResult: [%d, %d], %d+%d=%d\n", target, res[0], res[1], data[res[0]], data[res[1]], target);
-			}
+			test(data, target, solution);
 			
 			
 			if ( i >= 2 ) {
@@ -42,24 +38,37 @@ public class TwoSum{
 				}
 				target = data[a] + data[b];
 				
-				res = sortSolution(data, target );
-				
-				if ( res[0] == -1 ) {
-					System.out.printf( "\tTARGET: No valid pair found.\n", target);
-				} else{
-					System.out.printf( "\tTARGET: %d\tResult: [%d, %d], %d+%d=%d\n", target, res[0], res[1], data[res[0]], data[res[1]], target);
-				}
+				test(data, target, solution);
 				
 			}
 			
-			target = -1;
-			res = sortSolution(data, -1);
-			if ( res[0] == -1 ) {
-				System.out.printf( "\tTARGET: No valid pair found.\n", target);
-			} else{
-				System.out.printf( "\tTARGET: %d\tResult: [%d, %d], %d+%d=%d\n", target, res[0], res[1], data[res[0]], data[res[1]], target);
-			}
+			test(data, -1, solution);
 			
+		}
+		
+	}
+	
+	private static void test(int[] arr, int target, int solution){
+		int[] res;
+		switch(solution){
+			case 1:
+				res = naiveSolution(arr, target);
+				break;
+			case 2:
+				res = hashMapSolution(arr, target);
+				break;
+			case 3:
+				res = sortSolution(arr, target);
+				break;
+			default:
+				res = naiveSolution(arr, target);
+				break;	
+		}
+		
+		if ( res[0] == -1 ) {
+			System.out.printf( "\tTARGET: No valid pair found.\n", target);
+		} else{
+			System.out.printf( "\tTARGET: %d\tResult: [%d, %d], %d+%d=%d\n", target, res[0], res[1], arr[res[0]], arr[res[1]], target);
 		}
 		
 	}

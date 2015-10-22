@@ -12,6 +12,7 @@
 Output: ture if 9 can be found through a valid path. Otherwise return false.
 
 Example: 
+
 1  | 1 | 0 | 0  | 1 | 0 
 ---  | --- | --- | ---  | --- | --- 
 0  | 1 | 1 | 0  | 1 | 0 

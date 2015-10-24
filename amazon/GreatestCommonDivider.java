@@ -1,4 +1,11 @@
+
+import java.util.Random;
+
 public class GreatestCommonDivider{
+
+    private static final int LARGEARRAY_SIZE = 1000;
+    private static final int SMALLARRAY_SIZE = 10;
+    
     public static void main(String[] args) {
         int[][] arr = { {1,2,3,4,5,6}, {26,22,32,42,56,64},{1,2,3,0,5,6},{1,2,-3,0,5,6}, {26,-22,32,42,56,64}};
         
@@ -12,6 +19,33 @@ public class GreatestCommonDivider{
             findGreatestCommonDivider(arr[i]);
             
         }
+        
+        // Random generator
+        Random random = new Random();
+        
+        // small number test  
+        System.out.printf("Small numbers test~[1,100], size = %d:\n",SMALLARRAY_SIZE);     
+        int[] smallNumberArray = new int[SMALLARRAY_SIZE];
+        for(int i = 0; i < SMALLARRAY_SIZE; ++i) {
+            smallNumberArray[i] = random.nextInt(100);
+        }
+        findGreatestCommonDivider(smallNumberArray);
+        
+        // Large number test 
+        System.out.printf("Large numbers test~[1000,1100], size = %d:\n",SMALLARRAY_SIZE);      
+        int[] largeNumberArray = new int[SMALLARRAY_SIZE];
+        for(int i = 0; i < SMALLARRAY_SIZE; ++i) {
+            largeNumberArray[i] = random.nextInt(100)+1000;
+        }
+        findGreatestCommonDivider(largeNumberArray);
+        
+        // Large array test      
+        System.out.printf("Large array test~[1,100], size = %d:\n",LARGEARRAY_SIZE); 
+        int[] largeArray = new int[LARGEARRAY_SIZE];
+        for(int i = 0; i < LARGEARRAY_SIZE; ++i) {
+            largeArray[i] = random.nextInt(100);
+        }
+        findGreatestCommonDivider(largeArray);
         
     }
     
@@ -44,7 +78,7 @@ interface GreatestCommonDividerFinder{
 }
 
 class Counter{
-    protected int counter;
+    protected long counter;
     
     public Counter() {
         resetCounter();
@@ -54,7 +88,7 @@ class Counter{
         this.counter = 0;
     }
     
-    public int getCounter() {
+    public long getCounter() {
         return this.counter;
     }
     
